@@ -1,0 +1,15 @@
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.GeneratedMSBuildEditorConfig.editorconfig
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.AssemblyInfoInputs.cache
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.AssemblyInfo.cs
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.csproj.CoreCompileInputs.cache
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.sourcelink.json
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0\ENSEMENC.exe
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0\ENSEMENC.deps.json
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0\ENSEMENC.runtimeconfig.json
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0\ENSEMENC.dll
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0\ENSEMENC.pdb
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.dll
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\refint\ENSEMENC.dll
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.pdb
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ENSEMENC.genruntimeconfig.cache
+H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0\ref\ENSEMENC.dll
