@@ -27,19 +27,21 @@ public class Plantes
 
     public int Vitesse{get; set;}
     public int NiveauCroissance{get; set;}
+    public int NbFruits{get; set;}
     
-    public Plantes(string type, bool comestible, bool mauvaiseHerbe, string saisonSemis, int vitesse)
+    public Plantes(string type, bool comestible, bool mauvaiseHerbe, string saisonSemis, int vitesse, int nbFruits)
     {
         Type = type;
         Comestible = comestible;
         MauvaiseHerbe = mauvaiseHerbe;
         SaisonSemis = saisonSemis;
         Vitesse = vitesse;
-        NiveauCroissance = 0;
+        NiveauCroissance = 0; //A 75, la plante a fini de pousser
+        NbFruits = nbFruits;
     }
 
     public override string ToString()
     {
-        return $"{Type}";
+        return $" Type : {Type} \n Comestible : {Comestible} \n Mauvaise herbe : {MauvaiseHerbe} \n Saison semis : {SaisonSemis} \n Vitesse : {Vitesse} \n Niveau croissance : {NiveauCroissance} \n Nombre de fruits possibles : {NbFruits} \n  ";
     }
 }

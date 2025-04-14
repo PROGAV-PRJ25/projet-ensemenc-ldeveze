@@ -1,5 +1,2 @@
-﻿Plantes p1 = new Plantes("Vivace");
+﻿Plantes p1 = new Plantes("Annuelle", false, false, "Hiver", 1, 7);
 Console.WriteLine(p1);
-
-Plantes p2 = new Plantes("POUET");
-Console.WriteLine(p2);
