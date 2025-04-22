@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\ENSEMENC\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {}
+    "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {}
   },
   "projects": {
-    "H:\\ENSEMENC\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {
+    "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\ENSEMENC\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
+        "projectUniqueName": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
         "projectName": "ENSEMENC",
-        "projectPath": "H:\\ENSEMENC\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
-        "packagesPath": "C:\\Users\\colarge\\.nuget\\packages\\",
-        "outputPath": "H:\\ENSEMENC\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\obj\\",
+        "projectPath": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
+        "packagesPath": "C:\\Users\\ldeveze\\.nuget\\packages\\",
+        "outputPath": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\colarge\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ldeveze\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

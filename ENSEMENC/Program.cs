@@ -1,4 +1,4 @@
-﻿Monde monde = new Monde(5, 5); // Plateau 5x5
+﻿Monde monde = new Monde(10, 10); // Plateau 5x5
 
 // Modifier quelques couleurs
 monde.ChangerCouleurCase(2, 2, ConsoleColor.Red);

@@ -1,11 +1,17 @@
 class Case
 {
-    public ConsoleColor Couleur { get; set; } = ConsoleColor.White;
+    public ConsoleColor Couleur { get; set; }
+    public int CoordX {get; set;}
+    public int CoordY {get; set;}
 
-    public void Afficher()
+    public Case(int coordX, int coordY)
     {
-        Console.ForegroundColor = Couleur;
-        Console.Write("█");
-        Console.ResetColor();
+        Couleur = ConsoleColor.White;
+        CoordX = coordX;
+        CoordY = coordY;
+        
     }
+
+
+    
 }

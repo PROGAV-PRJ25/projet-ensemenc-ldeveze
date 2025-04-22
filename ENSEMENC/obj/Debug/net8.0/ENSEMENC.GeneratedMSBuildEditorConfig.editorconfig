@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ENSEMENC
-build_property.ProjectDir = H:\ENSEMENC\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\
+build_property.ProjectDir = H:\S2\ProjetProg\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
