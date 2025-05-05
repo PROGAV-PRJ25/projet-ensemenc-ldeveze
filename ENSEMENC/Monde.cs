@@ -1,82 +1,115 @@
-class Monde
+public class Monde
 {
+    private int Largeur;
+    private int Hauteur;
     private Case[,] plateau;
-    public int Largeur{get; set;}
-    public int Hauteur{get; set;}
+    private string[,] plateauAffichage;
 
-    public Monde(int largeur, int hauteur)
+
+    public Monde()
     {
-        Largeur = largeur;
-        Hauteur = hauteur;
+        Largeur = 3;
+        Hauteur = 3;
 
-        plateau = new Case[Hauteur*2+1, Largeur*2+1];
+        // Initialiser d'abord plateauAffichage
+        plateauAffichage = new string[Hauteur * 2 + 1, Largeur * 2 + 1];
+        int maxX = Hauteur*2;
+        int maxY = Largeur*2;
 
-        for (int y = 0; y < Hauteur*2+1; y++)
+        for (int y = 0; y < Hauteur * 2 + 1; y++)
         {
-            for (int x = 0; x < Largeur*2+1; x++)
+            for (int x = 0; x < Largeur * 2 + 1; x++)
             {
-                plateau[y, x] = new Case(x,y);
+                if (x % 2 != 0 && y % 2 == 0)
+                    plateauAffichage[y, x] = "═══"; // Mur horizontal
+                else if (x % 2 == 0 && y % 2 != 0)
+                    plateauAffichage[y, x] = "║"; // Mur vertical
+                else // Coin (intersection)
+                {
+                    if (x == 0 && y == 0)
+                        plateauAffichage[y, x] = "╔";
+                    else if (x == maxX && y == 0)
+                        plateauAffichage[y, x] = "╗";
+                    else if (x == 0 && y == maxY)
+                        plateauAffichage[y, x] = "╚";
+                    else if (x == maxX && y == maxY)
+                        plateauAffichage[y, x] = "╝";
+                    else if (y == 0)
+                        plateauAffichage[y, x] = "╦";
+                    else if (y == maxY)
+                        plateauAffichage[y, x] = "╩";
+                    else if (x == 0)
+                        plateauAffichage[y, x] = "╠";
+                    else if (x == maxX)
+                        plateauAffichage[y, x] = "╣";
+                    else
+                        plateauAffichage[y, x] = "╬";
+                }
             }
         }
+
+
+        // Ensuite on peut créer les cases (car plateauAffichage existe)
+        plateau = new Case[,]
+        {
+            {NewCase("Sable",0,0), NewCase("Argile",1,0), NewCase("Argile",2,0)},
+            {NewCase("Terre",0,1), NewCase("Argile",1,1), NewCase("Sable",2,1)},
+            {NewCase("Argile",0,2), NewCase("Sable",1,2), NewCase("Sable",2,2)},
+        };
     }
 
-    public void ChangerCouleurCase(int x, int y, ConsoleColor couleur)
+    public Case NewCase(string biome, int x, int y)
     {
-        plateau[y, x].Couleur = couleur;
+        modifierPlateauAffichage(biome, x, y);
+        return new Case(biome, x, y);
     }
 
-    public void AfficherCase(Case laCase)
-{
-    string txt = ".";
-
-    int x = laCase.CoordX;
-    int y = laCase.CoordY;
-    int maxX = Largeur * 2;
-    int maxY = Hauteur * 2;
-
-    if (x % 2 != 0 && y % 2 != 0)
-        txt = "   "; // Case vide (intérieure)
-    else if (x % 2 != 0 && y % 2 == 0)
-        txt = "═══"; // Mur horizontal
-    else if (x % 2 == 0 && y % 2 != 0)
-        txt = "║"; // Mur vertical
-    else // Coin (intersection)
+    public void modifierPlateauAffichage(string biome, int x, int y) // faudra ajouter emoji
     {
-        if (x == 0 && y == 0)
-            txt = "╔";
-        else if (x == maxX && y == 0)
-            txt = "╗";
-        else if (x == 0 && y == maxY)
-            txt = "╚";
-        else if (x == maxX && y == maxY)
-            txt = "╝";
-        else if (y == 0)
-            txt = "╦";
-        else if (y == maxY)
-            txt = "╩";
-        else if (x == 0)
-            txt = "╠";
-        else if (x == maxX)
-            txt = "╣";
-        else
-            txt = "╬";
-    }
+        string symbole = biome switch
+        {
+            "Sable" => "S",
+            "Terre" => "T",
+            "Argile" => "A",
+            _ => "?"
+        };
 
-    Console.ForegroundColor = laCase.Couleur;
-    Console.Write(txt);
-    Console.ResetColor();
-}
+        plateauAffichage[y * 2 + 1, x * 2 + 1] = symbole;
+    }
 
 
     public void AfficherPlateau()
     {
-        for (int y = 0; y < Hauteur*2+1; y++)
+        for (int y = 0; y < Hauteur * 2 + 1; y++)
         {
-            for (int x = 0; x < Largeur*2+1; x++)
+            for (int x = 0; x < Largeur * 2 + 1; x++)
             {
-                AfficherCase(plateau[y, x]);
+                if (plateauAffichage[y, x] == "S")
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("███");
+                }
+
+                else if (plateauAffichage[y, x] == "T")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("███");
+                }
+
+                else if (plateauAffichage[y, x] == "A")
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("███");
+                }
+
+                else
+                {
+                    Console.ResetColor();
+                    Console.Write(plateauAffichage[y,x]);
+                }
             }
             Console.WriteLine();
         }
     }
+
 }

@@ -1,17 +1,13 @@
-class Case
+public class Case
 {
-    public ConsoleColor Couleur { get; set; }
-    public int CoordX {get; set;}
-    public int CoordY {get; set;}
+    public string Biome { get; }
+    public int X { get; }
+    public int Y { get; }
 
-    public Case(int coordX, int coordY)
+    public Case(string biome, int x, int y)
     {
-        Couleur = ConsoleColor.White;
-        CoordX = coordX;
-        CoordY = coordY;
-        
+        Biome = biome;
+        X = x;
+        Y = y;
     }
-
-
-    
 }
