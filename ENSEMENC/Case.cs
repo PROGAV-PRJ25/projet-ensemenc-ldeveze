@@ -1,7 +1,7 @@
 public class Case
 {
     public string Biome { get; }
-    public string? PlanteEmoji { get; set; }
+    public Plantes? Plante { get; set; }
 
     public Case(string biome)
     {
@@ -15,14 +15,14 @@ public class Case
             "Terre" => "🟫",
             "Sable" => "🟨",
             "Argile" => "🟥",
-            _ => "⬛️"
+            _       => "⬛️"
         };
     }
 
     public string[] GetEmojiBlock(bool estSelectionnee)
     {
         string fond = estSelectionnee ? "🟪" : FondEmoji();
-        string centre = PlanteEmoji ?? fond;
+        string centre = Plante?.Emoji ?? fond;
 
         return new string[]
         {

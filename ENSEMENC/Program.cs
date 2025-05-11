@@ -1,27 +1,40 @@
 ﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Monde monde = new Monde();
 
-        monde.Planter(2, 1, "🧄");
-        monde.Planter(4, 3, "🧅");
+Monde monde = new Monde();
 
-        bool jeuActif = true;
+var oignon = new Plantes("Oignon", "🧄")
+{
+    Type = "Annuelle",
+    Comestible = true,
+    MauvaiseHerbe = false,
+    SaisonSemis = "Printemps",
+    VitesseCroissance = 1,
+    NbFruitsMax = 2,
+    Hauteur = 0.4f,
 
-        while (jeuActif)
-        {
-            Console.Clear();
-            monde.AfficherMonde();
+    TerrainPrefere = "Terre",
+    BesoinEau = 70,
+    BesoinLuminosite = 60,
+    TempPreferee = (10, 25),
 
-            ConsoleKey key = Console.ReadKey(true).Key;
+    EsperanceVie = 100,
+    Vulnerabilites = new Dictionary<string, float>
+    {
+        { "Gel", 0.2f },
+        { "Sécheresse", 0.3f },
+        { "Insectes", 0.15f }
+    }
+};
 
-            if (key == ConsoleKey.Escape)
-            {
-                jeuActif = false; // ← quitte la boucle proprement
-            }
-            else
-            {
-                monde.BougerJoueur(key);
-            }
-        }
+monde.Planter(2, 1, oignon);
 
-        Console.Clear();
-        Console.WriteLine("👋 Merci d’avoir joué !");
+bool enCours = true;
+while (enCours)
+{
+    Console.Clear();
+    monde.AfficherMonde();
+
+    var key = Console.ReadKey(true).Key;
+    if (key == ConsoleKey.Escape) enCours = false;
+    else monde.BougerJoueur(key);
+}
