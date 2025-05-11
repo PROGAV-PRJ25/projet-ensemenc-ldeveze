@@ -1,80 +1,81 @@
+using System;
+
 public class Monde
 {
-    private int Largeur;
-    private int Hauteur;
-    private Case[,] plateau;
-    private string[,] plateauAffichage;
+    public int Largeur { get; private set; }
+    public int Hauteur { get; private set; }
+    public Case[,] Grille { get; private set; }
 
+    public int JoueurX { get; set; }
+    public int JoueurY { get; set; }
 
     public Monde()
     {
-        Largeur = 3;
-        Hauteur = 3;
-
-        // Initialiser d'abord plateauAffichage
-        plateauAffichage = new string[Hauteur*2+1, Largeur*2+1];
-        int maxX = Hauteur*2;
-        int maxY = Largeur*2;
-
-        for (int y = 0; y < Hauteur * 2 + 1; y++)
-        {
-            for (int x = 0; x < Largeur * 2 + 1; x++)
-            {
-                if (x % 2 != 0 && y % 2 == 0)
-                    plateauAffichage[y, x] = "══════════"; // Mur horizontal
-                else if (x % 2 == 0 && y % 2 != 0)
-                    plateauAffichage[y, x] = "║"; // Mur vertical
-                else // Coin (intersection)
-                {
-                    if (x == 0 && y == 0)
-                        plateauAffichage[y, x] = "╔";
-                    else if (x == maxX && y == 0)
-                        plateauAffichage[y, x] = "╗";
-                    else if (x == 0 && y == maxY)
-                        plateauAffichage[y, x] = "╚";
-                    else if (x == maxX && y == maxY)
-                        plateauAffichage[y, x] = "╝";
-                    else if (y == 0)
-                        plateauAffichage[y, x] = "╦";
-                    else if (y == maxY)
-                        plateauAffichage[y, x] = "╩";
-                    else if (x == 0)
-                        plateauAffichage[y, x] = "╠";
-                    else if (x == maxX)
-                        plateauAffichage[y, x] = "╣";
-                    else
-                        plateauAffichage[y, x] = "╬";
-                }
-            }
-        }
-
-        // Ensuite on peut créer les cases (car plateauAffichage existe)
-        plateau = new Case[,]
-        {
-            {new Case("Sable",0,0," 🟨🟨🟨"), new Case("Terre",1,0," 🟥🟥🟥"), new Case("Argile",2,0," 🟧🟧🟧")},
-            {new Case("Terre",0,1," 🟥🟥🟥"), new Case("Argile",1,1," 🟧🍄🟧"), new Case("Sable",2,1," 🟨🟨🟨")},
-            {new Case("Argile",0,2," 🟧🟧🟧"), new Case("Sable",1,2," 🟨🟨🟨"), new Case("Sable",2,2," 🟨🟨🟨")},
-        };
+        InitialiserMonde();
+        JoueurX = 0;
+        JoueurY = 0;
     }
 
-    public void AfficherPlateau()
+    private void InitialiserMonde()
     {
+        string[,] schema = new string[,]
+        {
+            { "Terre", "Terre", "Terre", "Terre", "Sable" , "Sable" , "Sable" },
+            { "Terre", "Terre", "Terre", "Terre", "Sable" , "Sable" , "Sable" },
+            { "Terre", "Terre", "Terre", "Sable", "Sable" , "Sable" , "Sable" },
+            { "Terre", "Argile", "Argile", "Sable", "Sable" , "Sable" , "Sable" },
+            { "Argile", "Argile", "Argile", "Argile", "Terre" , "Terre" , "Sable" },
+            { "Argile", "Argile", "Argile", "Argile", "Terre" , "Terre" , "Terre" },
+            { "Argile", "Argile", "Argile", "Terre", "Terre" , "Terre" , "Terre" }
+        };
+
+        Hauteur = schema.GetLength(0);
+        Largeur = schema.GetLength(1);
+        Grille = new Case[Largeur, Hauteur];
+
         for (int y = 0; y < Hauteur; y++)
         {
             for (int x = 0; x < Largeur; x++)
             {
-                plateauAffichage[y*2+1, x*2+1] = plateau[y,x].Image;
+                Grille[x, y] = new Case(schema[y, x]);
             }
         }
+    }
 
-        for (int y = 0; y < Hauteur*2+1; y++)
+    public void Planter(int x, int y, string emoji)
+    {
+        if (x >= 0 && x < Largeur && y >= 0 && y < Hauteur)
         {
-            for (int x = 0; x < Largeur*2+1; x++)
+            Grille[x, y].PlanteEmoji = emoji;
+        }
+    }
+
+    public void BougerJoueur(ConsoleKey key)
+    {
+        switch (key)
+        {
+            case ConsoleKey.LeftArrow: if (JoueurX > 0) JoueurX--; break;
+            case ConsoleKey.RightArrow: if (JoueurX < Largeur - 1) JoueurX++; break;
+            case ConsoleKey.UpArrow: if (JoueurY > 0) JoueurY--; break;
+            case ConsoleKey.DownArrow: if (JoueurY < Hauteur - 1) JoueurY++; break;
+        }
+    }
+
+    public void AfficherMonde()
+    {
+        for (int y = 0; y < Hauteur; y++)
+        {
+            for (int ligneBloc = 0; ligneBloc < 3; ligneBloc++)
             {
-                Console.Write(plateauAffichage[y,x]);
+                for (int x = 0; x < Largeur; x++)
+                {
+                    bool estSelectionnee = (x == JoueurX && y == JoueurY);
+                    string[] bloc = Grille[x, y].GetEmojiBlock(estSelectionnee);
+                    Console.Write(bloc[ligneBloc]);
+                }
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
     }
-
 }

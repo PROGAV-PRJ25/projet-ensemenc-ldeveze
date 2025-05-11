@@ -1,15 +1,34 @@
 public class Case
 {
     public string Biome { get; }
-    public int X { get; }
-    public int Y { get; }
-    public string Image {get; }
+    public string? PlanteEmoji { get; set; }
 
-    public Case(string biome, int x, int y, string image)
+    public Case(string biome)
     {
         Biome = biome;
-        X = x;
-        Y = y;
-        Image = image;
+    }
+
+    private string FondEmoji()
+    {
+        return Biome switch
+        {
+            "Terre" => "🟫",
+            "Sable" => "🟨",
+            "Argile" => "🟥",
+            _ => "⬛️"
+        };
+    }
+
+    public string[] GetEmojiBlock(bool estSelectionnee)
+    {
+        string fond = estSelectionnee ? "🟪" : FondEmoji();
+        string centre = PlanteEmoji ?? fond;
+
+        return new string[]
+        {
+            $"{fond}{fond}{fond}",
+            $"{fond}{centre}{fond}",
+            $"{fond}{fond}{fond}"
+        };
     }
 }

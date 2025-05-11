@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {}
+    "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {}
   },
   "projects": {
-    "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {
+    "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
+        "projectUniqueName": "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
         "projectName": "ENSEMENC",
-        "projectPath": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
-        "packagesPath": "C:\\Users\\ldeveze\\.nuget\\packages\\",
-        "outputPath": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\obj\\",
+        "projectPath": "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
+        "packagesPath": "C:\\Users\\Corentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ldeveze\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Corentin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -36,8 +36,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -53,12 +54,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,15 @@
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.AssemblyInfoInputs.cache
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.AssemblyInfo.cs
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.csproj.CoreCompileInputs.cache
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.sourcelink.json
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0-windows\ENSEMENC.exe
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0-windows\ENSEMENC.deps.json
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0-windows\ENSEMENC.runtimeconfig.json
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0-windows\ENSEMENC.dll
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\bin\Debug\net8.0-windows\ENSEMENC.pdb
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.dll
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\refint\ENSEMENC.dll
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.pdb
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ENSEMENC.genruntimeconfig.cache
+C:\Users\Corentin\OneDrive\Documents\ENSemenCe\projet-ensemenc-leadeveze-corentinlarge\ENSEMENC\obj\Debug\net8.0-windows\ref\ENSEMENC.dll
