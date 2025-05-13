@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ga2tdfu5Z8w=",
+  "dgSpecHash": "m/AXR3TvyHs/jVDOgFhpayDc52/hyEz61KsmGOT5nojc+/nbTqviZWoCh1PFGiSDE3HwTLrMzaUdRZTSsKWFTg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Corentin\\OneDrive\\Documents\\ENSemenCe\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Corentin\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.11\\microsoft.netcore.app.ref.8.0.11.nupkg.sha512",
-    "C:\\Users\\Corentin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.11\\microsoft.windowsdesktop.app.ref.8.0.11.nupkg.sha512",
-    "C:\\Users\\Corentin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.11\\microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512",
-    "C:\\Users\\Corentin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.11\\microsoft.netcore.app.host.win-x64.8.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "H:\\S2\\ProjetProg\\projet-ensemenc-leadeveze-corentinlarge\\ENSEMENC\\ENSEMENC.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

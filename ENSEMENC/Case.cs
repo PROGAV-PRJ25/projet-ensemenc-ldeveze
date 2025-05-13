@@ -15,14 +15,14 @@ public class Case
             "Terre" => "🟫",
             "Sable" => "🟨",
             "Argile" => "🟥",
-            _       => "⬛️"
+            _ => "⬛"
         };
     }
 
     public string[] GetEmojiBlock(bool estSelectionnee)
     {
         string fond = estSelectionnee ? "🟪" : FondEmoji();
-        string centre = Plante?.Emoji ?? fond;
+        string centre = Plante?.GetEmojiAffichage() ?? fond;
 
         return new string[]
         {
