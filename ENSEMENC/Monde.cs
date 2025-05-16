@@ -43,22 +43,57 @@ public class Monde
         }
     }
 
-    public void Planter(int x, int y, Plantes plante)
+    public void Planter(Plantes plante)
     {
-        if (x >= 0 && x < Largeur && y >= 0 && y < Hauteur)
+        Grille[JoueurX, JoueurY].Plante = plante;
+    }
+
+    public void AfficherMenuPlantesEtPlanter()
+    {
+        Console.Clear();
+        Console.WriteLine("Sélectionnez une plante à planter :");
+        Console.WriteLine("[E] Vento 🧄");
+        Console.WriteLine("[R] Vira 🥬");
+        Console.WriteLine("[T] Luma 🦠");
+        Console.WriteLine("[Y] Spira 🥭");
+        Console.WriteLine("[U] Gral 🏵️");
+
+        ConsoleKey key = Console.ReadKey(true).Key;
+
+        Plantes? planteChoisie = key switch
         {
-            Grille[x, y].Plante = plante;
+            ConsoleKey.E => new Vento(),
+            ConsoleKey.R => new Vira(),
+            ConsoleKey.T => new Luma(),
+            ConsoleKey.Y => new Spira(),
+            ConsoleKey.U => new Gral(),
+            _ => null
+        };
+
+        if (planteChoisie != null)
+        {
+            Planter(planteChoisie);
         }
     }
+
 
     public void AvancerUnJour()
     {
         Jour++;
         foreach (var c in Grille)
         {
-            c.Plante?.PasserUnJour();
+            if (c.Plante != null)
+            {
+                c.Plante.PasserUnJour(c.Biome, c.EauContenue);
+                if (c.Plante.TempsDeVieRestant <= 0)
+                {
+                    // La plante meurt, on garde l'objet pour l'emoji mort
+                    c.Plante.NiveauCroissance = 0;
+                }
+            }
         }
     }
+
 
     public Case GetCaseSelectionnee() => Grille[JoueurX, JoueurY];
 
@@ -91,23 +126,23 @@ public class Monde
         }
 
         Console.WriteLine("-----------------------------");
-        Console.WriteLine($" Jour actuel : {Jour}");
-        Console.WriteLine();
+        Console.WriteLine($"Jour actuel : {Jour}");
 
         var c = GetCaseSelectionnee();
-        Console.WriteLine(" Informations de la case :");
-        Console.WriteLine($" - Biome : {c.Biome}");
-
+        Console.WriteLine("-----------------------------");
+        Console.WriteLine($"Biome de la case : {c.Biome}");
         if (c.Plante != null)
         {
-            Console.WriteLine();
+            Console.WriteLine("\nInformation sur la plante : \n");
             Console.WriteLine(c.Plante.AfficherInfos());
         }
         else
         {
-            Console.WriteLine();
-            Console.WriteLine(" Aucune plante sur cette case.");
+            Console.WriteLine("Pas de plante");
         }
+        Console.WriteLine("-----------------------------");
+        Console.WriteLine("Actions possibles : ");
+        Console.WriteLine("P : Planter | A : Arroser | C : Chasser");
         Console.WriteLine("-----------------------------");
     }
 }

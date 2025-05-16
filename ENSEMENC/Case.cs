@@ -2,10 +2,12 @@ public class Case
 {
     public string Biome { get; }
     public Plantes? Plante { get; set; }
+    public int EauContenue { get; set; }
 
     public Case(string biome)
     {
         Biome = biome;
+        EauContenue = 50; // valeur par défaut
     }
 
     private string FondEmoji()

@@ -9,20 +9,33 @@ public abstract class Plantes
 
     public int VitesseCroissance { get; protected set; } = 1;
     public int NiveauCroissance { get; set; } = 0;
-    public int NbFruitsMax { get; protected set; }
-    public float Hauteur { get; protected set; }
 
     public string TerrainPrefere { get; protected set; }
     public int BesoinEau { get; protected set; }
-    public int BesoinLuminosite { get; protected set; }
-    public (int min, int max) TempPreferee { get; protected set; }
 
-    public float EsperanceVie { get; set; } = 100f;
+    public int TempsDeVieRestant { get; set; }
+
     public Dictionary<string, float> Vulnerabilites { get; protected set; } = new();
 
-    public virtual void PasserUnJour()
+    public virtual void PasserUnJour(string biome, int eauContenue)
     {
-        if (NiveauCroissance < 100)
+        // Ajustement du temps de vie selon terrain
+        if (biome != TerrainPrefere)
+            TempsDeVieRestant -= 5; // pénalité si le terrain n'est pas adapté
+        else
+            TempsDeVieRestant -= 1;
+
+        // Ajustement selon l'eau contenue
+        int difference = Math.Abs(eauContenue - BesoinEau);
+        if (difference <= 10)
+            TempsDeVieRestant += 1; // bonus si eau proche du besoin
+        else if (difference <= 30)
+            TempsDeVieRestant -= 2;
+        else
+            TempsDeVieRestant -= 5;
+
+        // Croissance si encore en vie
+        if (TempsDeVieRestant > 0 && NiveauCroissance < 100)
         {
             NiveauCroissance += VitesseCroissance;
             if (NiveauCroissance > 100) NiveauCroissance = 100;
@@ -31,37 +44,16 @@ public abstract class Plantes
 
     public string GetEmojiAffichage()
     {
-        return NiveauCroissance >= 100 ? Emoji : "🅿️ "; // 🅿️
+        return TempsDeVieRestant <= 0 ? "🕳️ " :
+               NiveauCroissance >= 100 ? Emoji : "🅿️ ";
     }
 
-    public override string ToString()
-    {
-        return $"{Nom} {Emoji}";
-    }
+    public override string ToString() => $"{Nom} {Emoji}";
 
     public string AfficherInfos()
     {
-        string vuln = "";
-        foreach (var v in Vulnerabilites)
-            vuln += $"   • {v.Key} : {v.Value * 100}%\n";
-
-        return
-$@" Informations de la plante :
- - Nom : {Nom} {Emoji}
- - Type : {Type}
- - Comestible : {(Comestible ? "Oui" : "Non")}
- - Mauvaise herbe : {(MauvaiseHerbe ? "Oui" : "Non")}
- - Saison de semis : {SaisonSemis}
- - Croissance : {NiveauCroissance} / 100 unités
- - Nb fruits max : {NbFruitsMax}
- - Hauteur : {Hauteur} m
- - Terrain préféré : {TerrainPrefere}
- - Eau : {BesoinEau} / 100
- - Lumière : {BesoinLuminosite} / 100
- - Température idéale : {TempPreferee.min}–{TempPreferee.max}°C
- - Espérance de vie : {EsperanceVie:F1} %
-
- - Vulnérabilités :
-{vuln}";
+        return $"Nom: {Nom} {Emoji} | Type: {Type} | Comestible: {(Comestible ? "Oui" : "Non")} | Mauvaise herbe: {(MauvaiseHerbe ? "Oui" : "Non")} | Saison: {SaisonSemis}\n" +
+               $"Croissance: {NiveauCroissance}/100 | Terrain préféré: {TerrainPrefere}\n" +
+               $"Eau requise: {BesoinEau}/100 | Temps de vie restant: {TempsDeVieRestant} jours\n";
     }
-} 
+}
