@@ -12,7 +12,7 @@ public class Vira : Plantes
         VitesseCroissance = 5;
         TerrainPrefere = "Argile";
         BesoinEau = 80;
-        TempsDeVieRestant = 50;
+        TempsDeVieRestant = 90;
 
         Vulnerabilites = new Dictionary<string, float>
         {

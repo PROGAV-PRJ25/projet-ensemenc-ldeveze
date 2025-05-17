@@ -3,30 +3,28 @@ public class Case
     public string Biome { get; }
     public Plantes? Plante { get; set; }
     public int EauContenue { get; set; }
+    public bool AraigneePresente { get; set; } = false;
 
     public Case(string biome)
     {
         Biome = biome;
-        EauContenue = 50; // valeur par défaut
+        EauContenue = 50;
     }
 
-    private string FondEmoji()
+    private string FondEmoji() => Biome switch
     {
-        return Biome switch
-        {
-            "Terre" => "🟫",
-            "Sable" => "🟨",
-            "Argile" => "🟥",
-            _ => "⬛"
-        };
-    }
+        "Terre" => "🟫",
+        "Sable" => "🟨",
+        "Argile" => "🟥",
+        _ => "⬛"
+    };
 
     public string[] GetEmojiBlock(bool estSelectionnee)
     {
         string fond = estSelectionnee ? "🟪" : FondEmoji();
-        string centre = Plante?.GetEmojiAffichage() ?? fond;
+        string centre = AraigneePresente ? "🕷️ " : Plante?.GetEmojiAffichage() ?? fond;
 
-        return new string[]
+        return new[]
         {
             $"{fond}{fond}{fond}",
             $"{fond}{centre}{fond}",

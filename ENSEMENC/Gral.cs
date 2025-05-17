@@ -12,7 +12,7 @@ public class Gral : Plantes
         VitesseCroissance = 4;
         TerrainPrefere = "Argile";
         BesoinEau = 50;
-        TempsDeVieRestant = 60;
+        TempsDeVieRestant = 120;
 
         Vulnerabilites = new Dictionary<string, float>
         {

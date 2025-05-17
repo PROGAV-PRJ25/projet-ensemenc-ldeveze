@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 
-// Classe représentant le monde (le plateau de jeu)
 public class Monde
 {
     public int Largeur { get; private set; }
@@ -21,13 +21,13 @@ public class Monde
     {
         string[,] schema = new string[,]
         {
-            { "Terre", "Terre", "Terre", "Terre", "Sable" , "Sable" , "Sable" },
-            { "Terre", "Terre", "Terre", "Terre", "Sable" , "Sable" , "Sable" },
-            { "Terre", "Terre", "Terre", "Sable", "Sable" , "Sable" , "Sable" },
-            { "Terre", "Argile", "Argile", "Sable", "Sable" , "Sable" , "Sable" },
-            { "Argile", "Argile", "Argile", "Argile", "Terre" , "Terre" , "Sable" },
-            { "Argile", "Argile", "Argile", "Argile", "Terre" , "Terre" , "Terre" },
-            { "Argile", "Argile", "Argile", "Terre", "Terre" , "Terre" , "Terre" }
+            { "Terre", "Terre", "Terre", "Terre", "Sable", "Sable", "Sable" },
+            { "Terre", "Terre", "Terre", "Terre", "Sable", "Sable", "Sable" },
+            { "Terre", "Terre", "Terre", "Sable", "Sable", "Sable", "Sable" },
+            { "Terre", "Argile", "Argile", "Sable", "Sable", "Sable", "Sable" },
+            { "Argile", "Argile", "Argile", "Argile", "Terre", "Terre", "Sable" },
+            { "Argile", "Argile", "Argile", "Argile", "Terre", "Terre", "Terre" },
+            { "Argile", "Argile", "Argile", "Terre", "Terre", "Terre", "Terre" }
         };
 
         Hauteur = schema.GetLength(0);
@@ -45,8 +45,38 @@ public class Monde
 
     public void Planter(Plantes plante)
     {
-        Grille[JoueurX, JoueurY].Plante = plante;
+        var c = GetCaseSelectionnee();
+        if (c.AraigneePresente)
+        {
+            Console.WriteLine("❌ Impossible de planter ici, une araignée est présente !");
+            Thread.Sleep(1000);
+            return;
+        }
+
+        c.Plante = plante;
     }
+
+    private void AjouterAraigneesAleatoires()
+    {
+        Random rnd = new();
+        foreach (var c in Grille)
+        {
+            // 1% de chance d'apparition chaque jour
+            if (!c.AraigneePresente && rnd.NextDouble() < 0.01)
+            {
+                c.AraigneePresente = true;
+            }
+        }
+    }
+
+
+    public void ArroserCaseSelectionnee()
+    {
+        var c = GetCaseSelectionnee();
+        c.EauContenue += 10;
+        if (c.EauContenue > 100) c.EauContenue = 100;
+    }
+
 
     public void AfficherMenuPlantesEtPlanter()
     {
@@ -76,23 +106,43 @@ public class Monde
         }
     }
 
-
     public void AvancerUnJour()
     {
         Jour++;
         foreach (var c in Grille)
         {
+            // L'eau s'évapore un peu chaque jour
+            c.EauContenue -= 2;
+            if (c.EauContenue < 0) c.EauContenue = 0;
+
             if (c.Plante != null)
             {
                 c.Plante.PasserUnJour(c.Biome, c.EauContenue);
                 if (c.Plante.TempsDeVieRestant <= 0)
                 {
-                    // La plante meurt, on garde l'objet pour l'emoji mort
                     c.Plante.NiveauCroissance = 0;
                 }
             }
         }
+
+        AjouterAraigneesAleatoires();
     }
+
+    public void ChasserAraignee()
+    {
+        var c = GetCaseSelectionnee();
+        if (c.AraigneePresente)
+        {
+            c.AraigneePresente = false;
+            Console.WriteLine("🕷️ Vous avez chassé l'araignée !");
+        }
+        else
+        {
+            Console.WriteLine("Il n’y a pas d’araignée ici.");
+        }
+        Thread.Sleep(800);
+    }
+
 
 
     public Case GetCaseSelectionnee() => Grille[JoueurX, JoueurY];
@@ -127,19 +177,21 @@ public class Monde
 
         Console.WriteLine("-----------------------------");
         Console.WriteLine($"Jour actuel : {Jour}");
+        Console.WriteLine("-----------------------------");
 
         var c = GetCaseSelectionnee();
-        Console.WriteLine("-----------------------------");
         Console.WriteLine($"Biome de la case : {c.Biome}");
+
         if (c.Plante != null)
         {
-            Console.WriteLine("\nInformation sur la plante : \n");
-            Console.WriteLine(c.Plante.AfficherInfos());
+            Console.WriteLine("\nInformation sur la plante :\n");
+            Console.WriteLine(c.Plante.AfficherInfos(c.EauContenue));
         }
         else
         {
             Console.WriteLine("Pas de plante");
         }
+
         Console.WriteLine("-----------------------------");
         Console.WriteLine("Actions possibles : ");
         Console.WriteLine("P : Planter | A : Arroser | C : Chasser");

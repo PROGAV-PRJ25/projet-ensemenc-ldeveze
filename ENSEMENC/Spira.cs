@@ -12,7 +12,7 @@ public class Spira : Plantes
         VitesseCroissance = 6;
         TerrainPrefere = "Terre";
         BesoinEau = 60;
-        TempsDeVieRestant = 40;
+        TempsDeVieRestant = 80;
 
         Vulnerabilites = new Dictionary<string, float>
         {

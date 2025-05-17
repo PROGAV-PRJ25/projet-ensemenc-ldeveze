@@ -12,7 +12,7 @@ public class Luma : Plantes
         VitesseCroissance = 8;
         TerrainPrefere = "Sable";
         BesoinEau = 40;
-        TempsDeVieRestant = 20;
+        TempsDeVieRestant = 110;
 
         Vulnerabilites = new Dictionary<string, float>
         {

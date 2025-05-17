@@ -13,7 +13,7 @@ public class Vento : Plantes
         TerrainPrefere = "Terre";
         BesoinEau = 70;
 
-        TempsDeVieRestant = 30; // durée de vie initiale
+        TempsDeVieRestant = 100; // durée de vie initiale
         Vulnerabilites = new Dictionary<string, float>
         {
             { "Gel", 0.2f },
