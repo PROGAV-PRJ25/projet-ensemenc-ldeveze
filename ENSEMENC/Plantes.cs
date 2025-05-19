@@ -42,7 +42,6 @@ public abstract class Plantes
     public string AfficherInfos(int eauContenue)
     {
         return $"Nom: {Nom} {Emoji} | Type: {Type} | Comestible: {(Comestible ? "Oui" : "Non")} | Mauvaise herbe: {(MauvaiseHerbe ? "Oui" : "Non")} | Saison: {SaisonSemis}\n" +
-               $"Croissance: {NiveauCroissance}/100 | Terrain préféré: {TerrainPrefere}\n" +
-               $"Eau requise: {eauContenue}/{BesoinEau} | Vie restante: {TempsDeVieRestant} jours\n";
+               $"Croissance: {NiveauCroissance}/100 | Terrain préféré: {TerrainPrefere} | Eau requise: {eauContenue}/{BesoinEau} | Vie restante: {TempsDeVieRestant} jours\n";
     }
 }

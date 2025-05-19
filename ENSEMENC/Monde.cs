@@ -17,6 +17,8 @@ public class Monde
         JoueurY = 0;
     }
 
+    public bool EstEnUrgence { get; private set; } = false;
+
     private void InitialiserMonde()
     {
         string[,] schema = new string[,]
@@ -59,15 +61,17 @@ public class Monde
     private void AjouterAraigneesAleatoires()
     {
         Random rnd = new();
+        double tauxApparition = EstEnUrgence ? 0.20 : 0.008; // 10% en urgence, 0.8% sinon
+
         foreach (var c in Grille)
         {
-            // 1% de chance d'apparition chaque jour
-            if (!c.AraigneePresente && rnd.NextDouble() < 0.01)
+            if (!c.AraigneePresente && rnd.NextDouble() < tauxApparition)
             {
                 c.AraigneePresente = true;
             }
         }
     }
+
 
 
     public void ArroserCaseSelectionnee()
@@ -109,10 +113,26 @@ public class Monde
     public void AvancerUnJour()
     {
         Jour++;
+
+        // Activer/désactiver le mode urgence
+        if (Jour % 30 == 0)
+        {
+            EstEnUrgence = true;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("🚨 Mode URGENCE activé ! Une pluie d'araignée débarque et l'eau vient de fortement s'évaporer !");
+            Console.ResetColor();
+            Thread.Sleep(2000); // Pause pour que le joueur le voie bien
+        }
+        else
+        {
+            EstEnUrgence = false;
+        }
+
         foreach (var c in Grille)
         {
-            // L'eau s'évapore un peu chaque jour
-            c.EauContenue -= 2;
+            // Augmentation de l'évaporation
+            int evaporation = EstEnUrgence ? 5 : 2;
+            c.EauContenue -= evaporation;
             if (c.EauContenue < 0) c.EauContenue = 0;
 
             if (c.Plante != null)
@@ -127,6 +147,7 @@ public class Monde
 
         AjouterAraigneesAleatoires();
     }
+
 
     public void ChasserAraignee()
     {
@@ -184,7 +205,7 @@ public class Monde
 
         if (c.Plante != null)
         {
-            Console.WriteLine("\nInformation sur la plante :\n");
+            Console.WriteLine("Information sur la plante :");
             Console.WriteLine(c.Plante.AfficherInfos(c.EauContenue));
         }
         else
