@@ -61,7 +61,7 @@ public class Monde
     private void AjouterAraigneesAleatoires()
     {
         Random rnd = new();
-        double tauxApparition = EstEnUrgence ? 0.20 : 0.008; // 10% en urgence, 0.8% sinon
+        double tauxApparition = EstEnUrgence ? 0.20 : 0.008; // 20% en urgence, 0.8% sinon
 
         foreach (var c in Grille)
         {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ENSEMENC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4d2454c680b6d93d2da6dc76e51b892003ec3c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2110a3970ea05efad13eecbb03892d610136a6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ENSEMENC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ENSEMENC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
